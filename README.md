@@ -32,3 +32,5 @@
  使用了ElasticSearch进行查询，每天单表6000W，MYSQL没抗住
  
 csv_to_json.py # 就是格式化了一下CSV，方便导入Elastic
+![image](https://github.com/JavaKSealgod/stock_any/raw/main/csv.png)
+

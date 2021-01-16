@@ -1,0 +1,47 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+# code by Mr_Java
+# email:***@qianxin.com
+import re
+import time
+import os
+import json
+import threading
+import time
+import sys
+
+if sys.getdefaultencoding() != 'utf-8':
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+
+path = 'D:\\csv-to-json\\'
+all = []
+
+
+
+for fpathe, dirs, fs in os.walk(path):
+    for f in fs:
+        x = os.path.join(fpathe, f)
+        xx = x.strip('\n')
+        # print xx
+        if '.csv' in xx:
+            # print xx
+            # xxx=xx.replace('\\','\\\\')
+            all.append(xx)
+
+for i in all:
+    fp = open(i,'r')
+    filename = i[-10:].split('.')[0]
+    code = i[-10:].split('.')[0]
+    for line in fp.readlines()[1:]:
+        line = line.strip('\n')+','+code
+        # print line
+        insert_data = line.split(',')
+        # insert(insert_arr = insert_data)
+        json_data = '{"TranID":'+insert_data[0]+',"Time":"'+insert_data[1]+'","Price":"'+insert_data[2]+'","Volume":'+insert_data[3]+',"SaleOrderVolume":'+insert_data[4]+',"BuyOrderVolume":'+insert_data[5]+',' \
+                    '"Type":"'+insert_data[6]+'","SaleOrderID":'+insert_data[7]+',"SaleOrderPrice":"'+insert_data[8]+'","BuyOrderID":'+insert_data[9]+',"BuyOrderPrice":"'+insert_data[10]+'","code":"'+insert_data[11]+'"}'
+        print json_data
+        # fpp_demod = open('demo.json','a')
+        # fpp_demod.write('%s\n'%str(json_data))
+        fpp = open('E:\\mysql\\14\\'+filename+'.txt','a')
+        fpp.write('%s\n'%str(line))

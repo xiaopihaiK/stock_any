@@ -30,3 +30,5 @@
  现在正在将所有的数据导入到数据库中等待分析
  
  使用了ElasticSearch进行查询，每天单表6000W，MYSQL没抗住
+ 
+csv_to_json.py # 就是格式化了一下CSV，方便导入Elastic
